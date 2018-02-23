@@ -14,11 +14,15 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
         <flink.version>0.10.2</flink.version>
-        <spark.version>2.2.1</spark.version>
+        <spark.version>2.3.0</spark.version>
         <scala.version>2.11.8</scala.version>
         <scala.binary.version>2.11</scala.binary.version>
     </properties>
     <repositories>
+        <repository>
+          <id>local-repository</id>
+          <url>file:///home/tomasnykodym/.m2/repository/</url>
+        </repository>
         <repository>
             <id>central_maven</id>
             <name>central maven</name>
