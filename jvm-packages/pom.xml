@@ -19,11 +19,7 @@
         <scala.binary.version>2.11</scala.binary.version>
     </properties>
     <repositories>
-        <repository>
-          <id>local-repository</id>
-          <url>file:///home/tomasnykodym/.m2/repository/</url>
-        </repository>
-        <repository>
+       <repository>
             <id>central_maven</id>
             <name>central maven</name>
             <url>https://repo1.maven.org/maven2</url>

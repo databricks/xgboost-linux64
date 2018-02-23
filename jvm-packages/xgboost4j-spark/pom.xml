@@ -26,7 +26,15 @@
             <artifactId>xgboost4j</artifactId>
             <version>0.8-SNAPSHOT</version>
         </dependency>
-        <dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.scala-lang/scala-reflect -->
+       <dependency>
+         <groupId>org.scala-lang</groupId>
+         <artifactId>scala-reflect</artifactId>
+         <version>${scala.version}</version>
+       </dependency>
+
+       <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>

@@ -26,6 +26,7 @@ import scala.collection.JavaConverters._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future, TimeoutException}
+import scala.reflect.runtime.{universe => ru}
 
 /**
  * A tracker that ensures enough number of executor cores are alive.
@@ -81,7 +82,12 @@ class SparkParallelismTracker(
     try {
       body
     } finally {
-      sc.listenerBus.removeListener(listener)
+      // removeListener changed signature between spark 2.2 and 2.3.
+      // calling it via reflection will make the jar built against 2.3 compatible with spark 2.2.
+      // we need binary compatibility since we want to have single pre-built jar for spark2.3/2
+      val x = ru.runtimeMirror(getClass.getClassLoader).reflect(sc.listenerBus)
+      val y = x.symbol.typeSignature.member(ru.TermName("removeListener"))
+      x.reflectMethod(y.asMethod)(listener)
     }
   }
 
